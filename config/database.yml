@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: P@$$word12
+  host: <%= ENV['DB_HOST'] %>
+
+development:
+  <<: *default
+  database: ror-6-api_development
+
+test:
+  <<: *default
+  database: ror-6-api_test
+
+production:
+  <<: *default
+  database: ror-6-api_production
+  username: ror-6-api
+  password: <%= ENV['ror-6-api_DATABASE_PASSWORD'] %>
